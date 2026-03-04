@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trent Bolone — Dating Coach</title>
+    <meta name="description" content="Real dating advice. No games, no BS. Join the free newsletter from Trent Bolone.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #0F1117;
+            --surface:      #161B27;
+            --accent:       #F0922B;   /* warm orange from tank top */
+            --accent-soft:  rgba(240, 146, 43, 0.12);
+            --sky:          #7DCFED;   /* sky blue from photo bg */
+            --text:         #F5F5F5;
+            --muted:        #9CA3AF;
+            --border:       rgba(255,255,255,0.08);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* ── NAV ─────────────────────────────────────────── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 1.1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 17, 23, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.15rem;
+            letter-spacing: 0.06em;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta {
+            background: var(--accent) !important;
+            color: #000 !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 700 !important;
+        }
+
+        /* ── HERO ────────────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            gap: 5rem;
+        }
+
+        .hero-content { flex: 1; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-soft);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.35rem 0.9rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
+        }
+        h1 .highlight { color: var(--accent); }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 460px;
+            margin-bottom: 2.5rem;
+            line-height: 1.75;
+        }
+
+        /* email form */
+        .email-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 460px;
+            margin-bottom: 0.75rem;
+        }
+        .email-form input[type="email"] {
+            flex: 1;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.85rem 1.1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .email-form input[type="email"]::placeholder { color: var(--muted); }
+        .email-form input[type="email"]:focus { border-color: var(--accent); }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 0.85rem 1.4rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+        .btn-primary:active { transform: translateY(0); }
+
+        .form-note { font-size: 0.8rem; color: var(--muted); }
+
+        .hero-photo { flex-shrink: 0; }
+        .hero-photo img {
+            width: 360px;
+            height: 360px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 70px rgba(240, 146, 43, 0.22), 0 0 120px rgba(125, 207, 237, 0.08);
+            display: block;
+        }
+
+        /* ── SOCIAL PROOF BAR ────────────────────────────── */
+        .proof-bar {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 1.6rem 2rem;
+        }
+        .proof-bar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .proof-stat { text-align: center; }
+        .proof-stat .number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.9rem;
+            color: var(--accent);
+            display: block;
+        }
+        .proof-stat .label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ── ABOUT ───────────────────────────────────────── */
+        .about {
+            max-width: 760px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.9rem;
+        }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
+        }
+        .about p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* ── WHAT YOU GET ────────────────────────────────── */
+        .wyg {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 5rem 2rem;
+        }
+        .wyg-inner { max-width: 1100px; margin: 0 auto; }
+        .wyg-header { text-align: center; margin-bottom: 3rem; }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 3.5rem;
+        }
+        .card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: border-color 0.2s;
+        }
+        .card:hover { border-color: var(--accent); }
+        .card-icon { font-size: 1.7rem; margin-bottom: 0.9rem; }
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .card p { color: var(--muted); font-size: 0.88rem; line-height: 1.65; }
+
+        /* second sign-up form inside wyg */
+        .wyg-form-wrap { text-align: center; }
+        .wyg-form-wrap p { color: var(--muted); margin-bottom: 1.25rem; font-size: 0.95rem; }
+        .wyg-form {
+            display: inline-flex;
+            gap: 0.75rem;
+            max-width: 460px;
+            width: 100%;
+        }
+        .wyg-form input[type="email"] {
+            flex: 1;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.85rem 1.1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .wyg-form input[type="email"]::placeholder { color: var(--muted); }
+        .wyg-form input[type="email"]:focus { border-color: var(--accent); }
+
+        /* ── CONTACT ─────────────────────────────────────── */
+        .contact {
+            max-width: 680px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        .contact p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            line-height: 1.75;
+        }
+        .btn-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-email:hover { background: var(--accent); color: #000; }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .social-link:hover { color: var(--text); border-color: rgba(255,255,255,0.3); }
+
+        /* ── FOOTER ──────────────────────────────────────── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        /* ── RESPONSIVE ──────────────────────────────────── */
+        @media (max-width: 780px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 6rem;
+                gap: 2.5rem;
+            }
+            .hero-photo img { width: 210px; height: 210px; }
+            .hero-sub { margin: 0 auto 2.5rem; }
+            .email-form { flex-direction: column; margin: 0 auto 0.75rem; }
+            .form-note { text-align: center; }
+            .nav-links { display: none; }
+            .wyg-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────── -->
+<nav>
+    <a href="#" class="nav-logo">TRENT <span>BOLONE</span></a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+    </ul>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">Dating Coach</div>
+        <h1>Stop Leaving<br>Matches on <span class="highlight">Read.</span></h1>
+        <p class="hero-sub">Real dating advice for real people — no pickup artist nonsense, no games. Just what actually works, straight from someone who figured it out.</p>
+
+        <!--
+            MAILCHIMP SETUP:
+            1. Log into Mailchimp → Audience → Signup forms → Embedded forms
+            2. Copy the form "action" URL and paste it below (replace https://trentbolone.us17.list-manage.com/subscribe/post?u=148b70eb7cc125bc6007105b8&amp;id=d066e64ba6&amp;f_id=000ac3e1f0)
+            3. Also replace the hidden input name "b_XXXXXX" with the one Mailchimp gives you
+        -->
+        <form
+            class="email-form"
+            action="https://trentbolone.us17.list-manage.com/subscribe/post?u=148b70eb7cc125bc6007105b8&amp;id=d066e64ba6&amp;f_id=000ac3e1f0"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            target="_blank"
+            novalidate>
+            <input type="email" name="EMAIL" placeholder="your@email.com" required aria-label="Email address">
+            <!-- Anti-bot honeypot — do not remove -->
+            <div style="position:absolute;left:-5000px;" aria-hidden="true">
+                <input type="text" name="b_148b70eb7cc125bc6007105b8_d066e64ba6" tabindex="-1" value="">
+            </div>
+            <button type="submit" class="btn-primary" name="subscribe">Join Free →</button>
+        </form>
+        <p class="form-note">No spam. Unsubscribe any time.</p>
+    </div>
+
+    <div class="hero-photo">
+        <img src="headshot.jpg" alt="Trent Bolone">
+    </div>
+</section>
+
+<!-- ── SOCIAL PROOF BAR ──────────────────────────────────── -->
+<div class="proof-bar">
+    <div class="proof-bar-inner">
+        <!-- Update these numbers with your real counts -->
+        <div class="proof-stat">
+            <span class="number">10K+</span>
+            <span class="label">TikTok Followers</span>
+        </div>
+        <div class="proof-stat">
+            <span class="number">10K+</span>
+            <span class="label">Instagram Followers</span>
+        </div>
+        <div class="proof-stat">
+            <span class="number">100+</span>
+            <span class="label">Videos Published</span>
+        </div>
+    </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────────────── -->
+<section class="about" id="about">
+    <p class="section-label">About Trent</p>
+    <h2>Dating Advice from Someone Who's Been in the Trenches</h2>
+    <p>
+        I spent years figuring out what actually works in dating — through a lot of trial, error, and genuinely terrible first dates.
+        Now I share everything I've learned on TikTok and Instagram, and in my free weekly newsletter.
+        Straight talk, no fluff, zero cringe.
+    </p>
+</section>
+
+<!-- ── WHAT YOU GET ───────────────────────────────────────── -->
+<section class="wyg" id="newsletter">
+    <div class="wyg-inner">
+        <div class="wyg-header">
+            <p class="section-label">The Newsletter</p>
+            <h2>What You Get When You Join</h2>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">💬</div>
+                <h3>Openers That Actually Get Replies</h3>
+                <p>Real conversation starters backed by what's working right now — not recycled lines from 2017.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3>Profile Tips</h3>
+                <p>How to build a profile that stands out and pulls in the right matches without trying too hard.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <h3>Mindset Shifts</h3>
+                <p>The mental side of dating — how to handle rejection, build real confidence, and stop overthinking.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📅</div>
+                <h3>Date Ideas That Don't Suck</h3>
+                <p>First date spots and moves that create real chemistry instead of awkward silences over coffee.</p>
+            </div>
+        </div>
+
+        <div class="wyg-form-wrap">
+            <p>Join free — one email a week, always worth reading.</p>
+            <!-- Same Mailchimp action URL as the hero form above -->
+            <form
+                class="wyg-form"
+                action="https://trentbolone.us17.list-manage.com/subscribe/post?u=148b70eb7cc125bc6007105b8&amp;id=d066e64ba6&amp;f_id=000ac3e1f0"
+                method="post"
+                target="_blank"
+                novalidate>
+                <input type="email" name="EMAIL" placeholder="your@email.com" required aria-label="Email address">
+                <div style="position:absolute;left:-5000px;" aria-hidden="true">
+                    <input type="text" name="b_148b70eb7cc125bc6007105b8_d066e64ba6" tabindex="-1" value="">
+                </div>
+                <button type="submit" class="btn-primary" name="subscribe">Join Free →</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ── CONTACT ───────────────────────────────────────────── -->
+<section class="contact" id="contact">
+    <p class="section-label">Get In Touch</p>
+    <h2>Want to Work Together?</h2>
+    <p>Brand deals, collabs, coaching inquiries, or just want to say hi — slide into my inbox. I read every email.</p>
+    <a href="mailto:trent@trentbolone.com" class="btn-email">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        trent@trentbolone.com
+    </a>
+
+    <div class="social-links">
+        <!-- Update these URLs if your handles differ -->
+        <a href="https://tiktok.com/@trent_bolone" target="_blank" rel="noopener" class="social-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.75a8.27 8.27 0 004.84 1.55V6.87a4.85 4.85 0 01-1.07-.18z"/>
+            </svg>
+            TikTok
+        </a>
+        <a href="https://instagram.com/trent.bolone" target="_blank" rel="noopener" class="social-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            Instagram
+        </a>
+    </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+    <p>&copy; 2026 Trent Bolone. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
